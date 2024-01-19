@@ -1,22 +1,26 @@
-import React, { useRef, useState } from 'react'
-import Wrapper from '../../components/ui/Wrapper'
+import React, { useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
+import Wrapper from '../../components/ui/Wrapper';
 import { recievedMailHandler, sentMailHandler } from '../../services/redux/api/mailsThunk';
-import { Firestore } from 'firebase/firestore';
 
 const Compose = () => {
   const mailRef = useRef();
   const subjectRef = useRef();
   const messageRef = useRef();
   const dispatch = useDispatch();
-  const {currentUser} = useSelector(state => state.auth);
+  const { currentUser } = useSelector(state => state.auth);
 
   async function handleMailSubmit(e) {
     e.preventDefault();
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+    const customFormattedDate = new Intl.DateTimeFormat('en-US', options).format(currentDate);
+
     const mail = mailRef.current.value;
     const subject = subjectRef.current.value;
     const message = messageRef.current.value;
+
     if (!mail.length) {
       toast.error("Please specify at least one recipient.");
       return;
@@ -24,9 +28,10 @@ const Compose = () => {
     const mailDetails = {
       id: "user" + String(Date.now()),
       sender: currentUser.email,
-      to:mail,
+      to: mail,
       subject,
       message,
+      timeStamp:customFormattedDate,
     }
     await dispatch(sentMailHandler(mailDetails));
     await dispatch(recievedMailHandler(mailDetails));
