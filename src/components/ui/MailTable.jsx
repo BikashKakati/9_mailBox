@@ -7,7 +7,7 @@ const MailTable = ({children}) => {
                 {/* head */}
                 <thead>
                     <tr>
-                        <th>Primary</th>
+                        <th>Mails</th>
                     </tr>
                 </thead>
                 <tbody>
