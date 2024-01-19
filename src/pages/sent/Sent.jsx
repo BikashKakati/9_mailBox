@@ -12,14 +12,16 @@ const Sent = () => {
 
   return (
     <Wrapper>
+      
       <MailTable>
         {
           !!sentMails.length &&
           sentMails.map(mail => {
-            return <MailList key={mail.id} mailDetails={mail} type="sent"/>
+            return <MailList key={mail.id} mailDetails={mail} type="sentMails"/>
           })
         }
       </MailTable>
+      {!sentMails.length && <p className='mt-10 text-2xl font-semibold text-zinc-500 text-center'>No sent message present</p>}
     </Wrapper>
   )
 }

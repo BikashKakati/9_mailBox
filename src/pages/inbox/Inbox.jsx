@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
-import Wrapper from '../../components/ui/Wrapper'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import MailList from '../../components/ui/MailList'
 import MailTable from '../../components/ui/MailTable'
-import { useDispatch, useSelector } from 'react-redux'
-import { getSentMails } from '../../services/redux/api/mailsThunk'
+import Wrapper from '../../components/ui/Wrapper'
 
 const Inbox = () => {
   const { recievedMails } = useSelector(state => state.mail);
@@ -12,14 +11,16 @@ const Inbox = () => {
 
   return (
     <Wrapper>
+      
       <MailTable>
         {
           !!recievedMails.length &&
           recievedMails?.map(mail => {
-            return <MailList key={mail.id} mailDetails={mail} type="recieve"/>
+            return <MailList key={mail.id} mailDetails={mail} type="recievedMails"/>
           })
         }
       </MailTable>
+      {!recievedMails.length && <p className='mt-10 text-2xl font-semibold text-zinc-500 text-center'>Inbox is empty</p>}
     </Wrapper>
   )
 }

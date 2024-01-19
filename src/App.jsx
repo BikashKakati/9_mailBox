@@ -25,7 +25,7 @@ const App = () => {
     if (subscribe) {
       dispatch(getSentMails());
 
-      const docRef = collection(db, `recievedMail/${currentUser?.email}/mails`);
+      const docRef = collection(db, `recievedMails/${currentUser?.email}/mails`);
       onSnapshot(docRef, (snapshot) => {
         dispatch(getRecievedMail(snapshot.docs.map((doc) => doc.data())));
       });
