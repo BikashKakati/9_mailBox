@@ -33,8 +33,8 @@ const Compose = () => {
       message,
       timeStamp:customFormattedDate,
     }
-    await dispatch(sentMailHandler(mailDetails));
     await dispatch(recievedMailHandler(mailDetails));
+    await dispatch(sentMailHandler(mailDetails));
     toast.remove();
     toast.success("email sent successfully!");
     e.target.reset();

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, deleteDoc, doc, getDocs, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../../firebase-config";
 
 export const sentMailHandler = createAsyncThunk(

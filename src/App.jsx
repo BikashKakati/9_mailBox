@@ -6,8 +6,8 @@ import { Route, Routes } from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
-import LogIn from './pages/Log/Login'
-import SignUp from './pages/Log/Signup'
+import LogIn from './pages/log/Login'
+import SignUp from './pages/log/Signup'
 import Compose from './pages/compose/Compose'
 import Details from './pages/details/Details'
 import Inbox from './pages/inbox/Inbox'
@@ -24,7 +24,7 @@ const App = () => {
     let subscribe = true;
     if (subscribe) {
       dispatch(getSentMails());
-
+      // snapshot function has been used here to imediately update the recieved mail state whenever any data change in firebase store. For the first mounting stage only useEffect used, after that the useEffect never running when snapshot function runs.
       const docRef = collection(db, `recievedMails/${currentUser?.email}/mails`);
       onSnapshot(docRef, (snapshot) => {
         dispatch(getRecievedMail(snapshot.docs.map((doc) => doc.data())));

@@ -12,12 +12,11 @@ const MailList = ({mailDetails, type}) => {
     // const date = new Date(timeStamp.seconds*1000).toLocalTimeString();
 
     async function handleMailOpening(){
-        toast.loading("Loading...");
+        Navigate(`/details/${type}/${id}`);
         if(!read){
             await dispatch(recievedMailHandler({...mailDetails, read:true}));
+            toast.remove();
         }
-        Navigate(`/details/${type}/${id}`);
-        toast.remove();
     }
     function handleMailDelete(e){
         e.stopPropagation();

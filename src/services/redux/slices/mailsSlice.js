@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
-import { deleteMails, getSentMails, sentMailHandler } from "../api/mailsThunk";
+import { deleteMails, getSentMails, recievedMailHandler, sentMailHandler } from "../api/mailsThunk";
 
 const mailsSlice = createSlice({
     name:"mail",
@@ -22,9 +22,10 @@ const mailsSlice = createSlice({
         }
     },
     extraReducers:(builder) =>{
-        builder.addCase(sentMailHandler.pending,(state) =>{
+        builder.addCase(recievedMailHandler.pending,()=>{
             toast.loading("loading...");
-        }).addCase(sentMailHandler.fulfilled,(state,action) =>{
+        })
+        builder.addCase(sentMailHandler.fulfilled,(state,action) =>{
             state.sentMails.push(action.payload);
         }).addCase(sentMailHandler.rejected,(state) =>{
             toast.remove();

@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Wrapper from '../../components/ui/Wrapper';
-import MailTable from '../../components/ui/MailTable';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import MailList from '../../components/ui/MailList';
-import { getSentMails } from '../../services/redux/api/mailsThunk';
+import MailTable from '../../components/ui/MailTable';
+import Wrapper from '../../components/ui/Wrapper';
 
 const Sent = () => {
   const {sentMails} = useSelector(state => state.mail);
-  const {currentUser} = useSelector(state => state.auth);
-  const dispatch = useDispatch();
 
   return (
     <Wrapper>

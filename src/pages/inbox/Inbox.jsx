@@ -1,13 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import MailList from '../../components/ui/MailList'
 import MailTable from '../../components/ui/MailTable'
 import Wrapper from '../../components/ui/Wrapper'
 
 const Inbox = () => {
   const { recievedMails } = useSelector(state => state.mail);
-  const { currentUser } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
 
   return (
     <Wrapper>
