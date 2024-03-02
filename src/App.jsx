@@ -6,8 +6,6 @@ import { Route, Routes } from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
-import Login from './pages/log/Login'
-import Signup from './pages/log/Signup'
 import Compose from './pages/compose/Compose'
 import Details from './pages/details/Details'
 import Inbox from './pages/inbox/Inbox'
@@ -15,6 +13,8 @@ import Sent from './pages/sent/Sent'
 import { db } from './services/firebase-config'
 import { getRecievedMail } from './services/redux/slices/mailsSlice'
 import { getSentMails } from './services/redux/api/mailsThunk'
+import Login from './pages/log/Login'
+import Signup from './pages/log/Signup'
 
 const App = () => {
   const { currentUser } = useSelector(state => state.auth);
