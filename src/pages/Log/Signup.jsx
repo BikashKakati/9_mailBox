@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Wrapper from '../../components/ui/Wrapper';
 import { auth } from '../../services/firebase-config';
 
-function SignUp() {
+const Signup=()=> {
     const emailRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
@@ -55,4 +55,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default Signup

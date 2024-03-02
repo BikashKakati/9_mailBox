@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Wrapper from '../../components/ui/Wrapper';
 import { logIn } from '../../services/redux/api/logThunk';
 
-const LogIn = () =>{
+const Login = () =>{
   const emailRef = useRef();
   const passwordRef = useRef();
   const dispatch = useDispatch();
@@ -40,4 +40,4 @@ const LogIn = () =>{
   )
 }
 
-export default LogIn
+export default Login
