@@ -6,8 +6,8 @@ import { Route, Routes } from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
-import LogIn from './pages/log/Login'
-import SignUp from './pages/log/Signup'
+import Login from './pages/log/Login'
+import Signup from './pages/log/Signup'
 import Compose from './pages/compose/Compose'
 import Details from './pages/details/Details'
 import Inbox from './pages/inbox/Inbox'
@@ -40,8 +40,8 @@ const App = () => {
       <Navbar />
       <Toaster position='top-center' />
       <Routes>
-        <Route path='/login' element={<LogIn />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/' element={<PrivateRoute><Sidebar /></PrivateRoute>}>
           <Route path='/' element={<Inbox />} />
           <Route path='/compose' element={<Compose />} />
