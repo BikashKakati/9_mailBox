@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className='navbar border-b-2 bg-white'>
       <div className="flex-1">
-        <Link to={"/"}><span className='text-2xl font-bold btn btn-ghost'>Mail Box</span></Link>
+        <Link to={"/"}><span className='text-2xl font-bold btn btn-ghost'>GetMail</span></Link>
       </div>
       <div className="flex-none">
         {currentUser && <span className='px-8 py-2 bg-red-200 rounded-lg mr-5'>{currentUser.email}</span>}
