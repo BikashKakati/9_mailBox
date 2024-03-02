@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import Wrapper from '../../components/ui/Wrapper';
 import { recievedMailHandler, sentMailHandler } from '../../services/redux/api/mailsThunk';
+import { getCurrentTime } from '../../utils/getCurrentTime';
 
 const Compose = () => {
   const mailRef = useRef();
@@ -13,10 +14,7 @@ const Compose = () => {
 
   async function handleMailSubmit(e) {
     e.preventDefault();
-    const currentDate = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
-    const customFormattedDate = new Intl.DateTimeFormat('en-US', options).format(currentDate);
-
+    const customFormattedDate = getCurrentTime();
     const mail = mailRef.current.value;
     const subject = subjectRef.current.value;
     const message = messageRef.current.value;
@@ -33,8 +31,8 @@ const Compose = () => {
       message,
       timeStamp:customFormattedDate,
     }
-    await dispatch(recievedMailHandler(mailDetails));
-    await dispatch(sentMailHandler(mailDetails));
+    dispatch(recievedMailHandler(mailDetails));
+    dispatch(sentMailHandler(mailDetails));
     toast.remove();
     toast.success("email sent successfully!");
     e.target.reset();

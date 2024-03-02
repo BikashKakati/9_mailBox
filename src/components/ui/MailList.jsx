@@ -9,12 +9,11 @@ const MailList = ({mailDetails, type}) => {
     const dispatch = useDispatch();
     const Navigate = useNavigate();
     const mail = type === "sentMails" ? to : sender;
-    // const date = new Date(timeStamp.seconds*1000).toLocalTimeString();
 
     async function handleMailOpening(){
         Navigate(`/details/${type}/${id}`);
         if(!read){
-            await dispatch(recievedMailHandler({...mailDetails, read:true}));
+            dispatch(recievedMailHandler({...mailDetails, read:true}));
             toast.remove();
         }
     }
@@ -26,8 +25,8 @@ const MailList = ({mailDetails, type}) => {
     return (
         <tr className="border-y-1 border-zinc-300 cursor-pointer" onClick={handleMailOpening}>
             <td >{!read && "🔵"}{"  "}{mail}</td>
-            <td className='font-semibold capitalize'>{subject}</td>
-            <td>{message?.slice(0,25)+"..."}</td>
+            <td className='font-semibold capitalize'>{subject?.length>30 ? subject?.slice(0,30)+"...":subject}</td>
+            <td>{message?.length>30 ? message?.slice(0,30)+"...":message}</td>
             <td>{timeStamp && timeStamp}</td>
             <td className='z-20'>
                 <button className='btn btn-info btn-xs' onClick={handleMailDelete}>Delete</button>
