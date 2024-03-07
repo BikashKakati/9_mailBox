@@ -40,12 +40,12 @@ const Compose = () => {
 
   return (
     <Wrapper>
-      <div className="max-w-[35rem] mx-auto bg-white shadow-md">
+      <div className="max-w-[35rem] mx-auto bg-base-100 shadow-md">
         <p className="px-5 py-3 bg-green-100">New Message</p>
         <form className='px-4 pb-4' onSubmit={handleMailSubmit}>
-          <input type="email" className="w-full pt-4  border-b-[1px] border-zinc-300 outline-none" placeholder='To' ref={mailRef} />
-          <input type="text" className="w-full pt-4 border-b-[1px] border-zinc-300 outline-none" placeholder='Subject' ref={subjectRef} />
-          <textarea rows="10" className='w-full pt-4 outline-none resize-none' placeholder='Write message' ref={messageRef} />
+          <input type="email" className="w-full pt-4  border-b-[1px] border-base-300 outline-none bg-base-100" placeholder='To' ref={mailRef} />
+          <input type="text" className="w-full pt-4 border-b-[1px] border-base-300 outline-none bg-base-100" placeholder='Subject' ref={subjectRef} />
+          <textarea rows="10" className='w-full pt-4 outline-none resize-none bg-base-100' placeholder='Write message' ref={messageRef} />
           <button type='submit' className='btn btn-info w-24'>Send</button>
         </form>
       </div>
