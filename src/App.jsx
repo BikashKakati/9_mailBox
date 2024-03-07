@@ -36,7 +36,7 @@ const App = () => {
   }, [currentUser])
 
   return (
-    <div className=' bg-base-200 min-h-dvh'>
+    <div className='min-h-dvh'>
       <Navbar />
       <Toaster position='top-center' />
       <Routes>

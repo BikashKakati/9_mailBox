@@ -5,7 +5,7 @@ const MailTable = ({children}) => {
    const {pathname} =  useLocation();
    const mailTitle = pathname.length > 1 ? pathname.slice(1): "inbox"
     return (
-        <div className="overflow-x-auto bg-white">
+        <div className="overflow-x-auto bg-base-100">
             <table className="table">
                 {/* head */}
                 <thead>
