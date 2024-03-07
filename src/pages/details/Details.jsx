@@ -10,9 +10,9 @@ const Details = () => {
    const mailDetail = mailType.find(mail => mail.id === currentMailId);
     return (
         <Wrapper>
-            <div className="bg-white pt-8 pb-12 px-16">
-                <p className="pb-4 text-2xl capitalize border-b-[1px]">{mailDetail?.subject}</p>
-                <div className="font-semibold py-6 flex justify-between border-b-[1px]">
+            <div className="bg-white mb-14 p-4 pb-10 md:pt-8 md:pb-12 md:px-16">
+                <p className="pb-4 text-xl md:text-2xl capitalize border-b-[1px]">{mailDetail?.subject}</p>
+                <div className="text-sm md:text-base font-semibold py-6 flex justify-between flex-wrap border-b-[1px]">
                     <span>{mailDetail?.sender}</span>
                     <span className="">{mailDetail?.timeStamp}</span>
                 </div>

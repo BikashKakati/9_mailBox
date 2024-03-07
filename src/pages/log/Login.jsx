@@ -29,7 +29,7 @@ const Login = () =>{
               <input type="email" placeholder="email" className="input input-bordered w-full" ref={emailRef} />
               <input type="password" placeholder="******" className="input input-bordered w-full" ref={passwordRef} />
               <button type="submit" className='btn btn-info btn-block text-base'>{"Submit"}</button>
-              <p className='text-end font-medium'>
+              <p className='text-center font-medium'>
                 <Link to="/signup">Create an account!</Link>
               </p>
             </div>

@@ -23,12 +23,12 @@ const MailList = ({mailDetails, type}) => {
     }
 
     return (
-        <tr className="border-y-1 border-zinc-300 cursor-pointer" onClick={handleMailOpening}>
-            <td >{!read && "🔵"}{"  "}{mail}</td>
+        <tr className="border-y-1 border-zinc-300 cursor-pointer flex flex-col md:table-row *:leading-3 md:*:leading-none *:py-1 md:*:py-4" onClick={handleMailOpening}>
+            <td className="mt-2 md:mt-0">{!read && "🔵"}{"  "}{mail}</td>
             <td className='font-semibold capitalize'>{subject?.length>30 ? subject?.slice(0,30)+"...":subject}</td>
-            <td>{message?.length>30 ? message?.slice(0,30)+"...":message}</td>
-            <td>{timeStamp && timeStamp}</td>
-            <td className='z-20'>
+            <td className=''>{message?.length>30 ? message?.slice(0,30)+"...":message}</td>
+            <td className='text-zinc-400 text-sm'>{timeStamp && timeStamp}</td>
+            <td className='my-2'>
                 <button className='btn btn-info btn-xs' onClick={handleMailDelete}>Delete</button>
             </td>
         </tr>
