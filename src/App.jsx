@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes } from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/navbar/Navbar'
-import Login from './pages/log/Login'
-import Signup from './pages/log/Signup'
 import { db } from './services/firebase-config'
 import { getSentMails } from './services/redux/api/mailsThunk'
 import { getRecievedMail } from './services/redux/slices/mailsSlice'
 
+const Login = lazy(() => import('./pages/log/Login'))
+const Signup = lazy(() => import('./pages/log/Signup'))
 const Inbox = lazy(() => import('./pages/inbox/Inbox'))
 const Compose = lazy(() => import('./pages/compose/Compose'))
 const Details = lazy(() => import('./pages/details/Details'))
