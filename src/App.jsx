@@ -1,20 +1,21 @@
 import { collection, onSnapshot } from 'firebase/firestore'
-import React, { useEffect } from 'react'
+import React, { Suspense, lazy, useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes } from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import Navbar from './components/navbar/Navbar'
-import Sidebar from './components/sidebar/Sidebar'
-import Compose from './pages/compose/Compose'
-import Details from './pages/details/Details'
-import Inbox from './pages/inbox/Inbox'
-import Sent from './pages/sent/Sent'
-import { db } from './services/firebase-config'
-import { getRecievedMail } from './services/redux/slices/mailsSlice'
-import { getSentMails } from './services/redux/api/mailsThunk'
 import Login from './pages/log/Login'
 import Signup from './pages/log/Signup'
+import { db } from './services/firebase-config'
+import { getSentMails } from './services/redux/api/mailsThunk'
+import { getRecievedMail } from './services/redux/slices/mailsSlice'
+
+const Inbox = lazy(() => import('./pages/inbox/Inbox'))
+const Compose = lazy(() => import('./pages/compose/Compose'))
+const Details = lazy(() => import('./pages/details/Details'))
+const Sidebar = lazy(() => import('./components/sidebar/Sidebar'))
+const Sent = lazy(() => import('./pages/sent/Sent'))
 
 const App = () => {
   const { currentUser } = useSelector(state => state.auth);
@@ -39,16 +40,22 @@ const App = () => {
     <div className='min-h-dvh'>
       <Navbar />
       <Toaster position='top-center' />
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/' element={<PrivateRoute><Sidebar /></PrivateRoute>}>
-          <Route path='/' element={<Inbox />} />
-          <Route path='/compose' element={<Compose />} />
-          <Route path='/sent' element={<Sent />} />
-          <Route path='/details/:type/:id' element={<Details />} />
-        </Route>
-      </Routes>
+      <Suspense
+        fallback={
+          <span className="loading loading-spinner loading-lg block min-h-dvh m-auto"></span>
+        }
+      >
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/' element={<PrivateRoute><Sidebar /></PrivateRoute>}>
+            <Route path='/' element={<Inbox />} />
+            <Route path='/compose' element={<Compose />} />
+            <Route path='/sent' element={<Sent />} />
+            <Route path='/details/:type/:id' element={<Details />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   )
 }
